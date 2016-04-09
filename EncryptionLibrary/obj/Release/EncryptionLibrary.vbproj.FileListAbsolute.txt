@@ -1,0 +1,10 @@
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\EncryptionLibrary\bin\Release\EncryptionLibrary.dll
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\EncryptionLibrary\bin\Release\EncryptionLibrary.pdb
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\EncryptionLibrary\bin\Release\EncryptionLibrary.xml
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\EncryptionLibrary\obj\Release\ResolveAssemblyReference.cache
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\EncryptionLibrary\obj\Release\EncryptionLibrary.Resources.resources
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\EncryptionLibrary\obj\Release\GenerateResource.read.1.tlog
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\EncryptionLibrary\obj\Release\GenerateResource.write.1.tlog
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\EncryptionLibrary\obj\Release\EncryptionLibrary.dll
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\EncryptionLibrary\obj\Release\EncryptionLibrary.xml
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\EncryptionLibrary\obj\Release\EncryptionLibrary.pdb

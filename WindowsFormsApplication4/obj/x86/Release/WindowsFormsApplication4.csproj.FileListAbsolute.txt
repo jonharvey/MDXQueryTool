@@ -1,0 +1,28 @@
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\bin\Release\ess_japi.dll
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.Core.dll
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\bin\Release\IKVM.Runtime.dll
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.Text.dll
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.SwingAWT.dll
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.Security.dll
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.Util.dll
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.XML.API.dll
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\bin\Release\IKVM.Runtime.JNI.dll
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.Management.dll
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.Naming.dll
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.Beans.dll
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.Media.dll
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\bin\Release\IKVM.AWT.WinForms.dll
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.Charsets.dll
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.Remoting.dll
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.Corba.dll
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.Misc.dll
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\obj\x86\Release\WindowsFormsApplication1.frmConnect.resources
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\obj\x86\Release\WindowsFormsApplication1.frmMain.resources
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\bin\Release\MDX Query Tool.exe
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\bin\Release\MDX Query Tool.pdb
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\obj\x86\Release\MDX Query Tool.exe
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\obj\x86\Release\MDX Query Tool.pdb
+C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\obj\x86\Release\WindowsFormsApplication1.Properties.Resources.resources
