@@ -16,3 +16,11 @@ C:\Users\Jon\Documents\Visual Studio 2010\WindowsFormsApplication4\EncryptionLib
 C:\Users\Jon\Documents\Visual Studio 2010\WindowsFormsApplication4\EncryptionLibrary\obj\Debug\EncryptionLibrary.dll
 C:\Users\Jon\Documents\Visual Studio 2010\WindowsFormsApplication4\EncryptionLibrary\obj\Debug\EncryptionLibrary.xml
 C:\Users\Jon\Documents\Visual Studio 2010\WindowsFormsApplication4\EncryptionLibrary\obj\Debug\EncryptionLibrary.pdb
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\EncryptionLibrary\bin\Debug\EncryptionLibrary.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\EncryptionLibrary\bin\Debug\EncryptionLibrary.pdb
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\EncryptionLibrary\bin\Debug\EncryptionLibrary.xml
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\EncryptionLibrary\obj\Debug\EncryptionLibrary.Resources.resources
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\EncryptionLibrary\obj\Debug\EncryptionLibrary.vbproj.GenerateResource.Cache
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\EncryptionLibrary\obj\Debug\EncryptionLibrary.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\EncryptionLibrary\obj\Debug\EncryptionLibrary.xml
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\EncryptionLibrary\obj\Debug\EncryptionLibrary.pdb

@@ -64,7 +64,13 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
             {
                 essUser = txtUser.Text.Trim();
                 essPW = txtPW.Text.Trim();
-                apsProviderURL = "http://" + txtAPS.Text.Trim() + ":13080/aps/JAPI";
+                apsProviderURL = txtAPS.Text.Trim();
+                if (!(apsProviderURL.Contains("http://") || apsProviderURL.Contains("https://")))
+                    apsProviderURL = "http://" + txtAPS.Text.Trim();
+                if(!apsProviderURL.Substring(apsProviderURL.IndexOf("//")).Contains(":"))
+                    apsProviderURL += ":19000";
+                if(!apsProviderURL.Contains("/aps/JAPI"))
+                    apsProviderURL += "/aps/JAPI";
                 essServer = txtEssServer.Text.Trim();
                 ess = IEssbase.Home.create(JAPI_VERSION);
                 svr = ess.signOn(essUser, essPW, false, null, apsProviderURL, essServer);
@@ -75,7 +81,7 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Unable to connect: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(String.Format("Unable to connect: {0}\nURL tried: {1}", ex.Message, apsProviderURL), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

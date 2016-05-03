@@ -11,13 +11,14 @@ using System.Timers;
 using Microsoft.Office.Interop;
 using Microsoft.VisualBasic;
 using EncryptionLibrary;
-
 using com.essbase.api.@base;
 using com.essbase.api.datasource;
 using com.essbase.api.dataquery;
 using com.essbase.api.metadata;
 using com.essbase.api.domain;
 using com.essbase.api.session;
+using ScintillaNET;
+using System.Xml.Serialization;
 
 namespace com.ecapitaladvisors.hyperion.MDXQueryTool
 {
@@ -30,7 +31,9 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
         }
 
         public enum ConnectionState { Connected, Disconnected };
+        public enum ExecutionState { NoQueryExecuted, QueryHasBeenExecuted };
         public ConnectionState frmState = ConnectionState.Disconnected;
+        public ExecutionState execState = ExecutionState.NoQueryExecuted;
         public IEssCubeView cv = null;
         public IEssbase ess = null;
         public IEssOlapServer svr = null;
@@ -52,12 +55,18 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
         private const String IV = "3ssBA5E_ru1e5!!!";
         public System.Timers.Timer connectionTimer = null;
         public System.Diagnostics.Stopwatch elapsedTime = null;
+        private int maxLineNumberCharLength = 6;
+        private int lastCaretPos = 0;
+        private MDXLexer mdxlexer;
+        private DataTable dtQueryHistory;
 
         #region FORM EVENTS
         private void frmMain_Load(object sender, EventArgs e)
         {
             if (Properties.Settings.Default.AutoSave)
                 LoadConfig(Properties.Settings.Default.AutoSaveLocation);
+            FormatCodeBox();
+            LoadQueryHistory();
         }
         private void btnConnect_Click(object sender, EventArgs e)
         {
@@ -69,7 +78,7 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
                     {
                         frmState = ConnectionState.Connected;
                         UpdateFormState();
-                        txtQuery.Focus();
+                        scintQry.Focus();
                     }
                 }
                 catch (Exception ex)
@@ -96,7 +105,7 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
             try
             {
                 //Update vars with input text
-                m_qry = txtQuery.Text;
+                m_qry = scintQry.Text; 
 
                 //Create the query object
                 qry = cv.createIEssOpMdxQuery();
@@ -108,7 +117,28 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
                     qry.setQuery(false, m_qry, false, IEssOpMdxQuery.EEssMemberIdentifierType.ALIAS);
 
                 //Execute the query
+                System.Diagnostics.Stopwatch qryTime = new System.Diagnostics.Stopwatch();
+                qryTime.Start();
                 cv.performOperation(qry);
+                qryTime.Stop();
+
+                //Update the status bar with run stats
+                String elapsed = null;
+                TimeSpan ts = qryTime.Elapsed;
+                if (ts.Minutes > 0)
+                    elapsed = String.Format("Executed in: {0}:{1}.{2} minutes", ts.Minutes, ts.Seconds, ts.Milliseconds);
+                else
+                    elapsed = String.Format("Executed in: {0}.{1} seconds", ts.Seconds, ts.Milliseconds);
+                tsslExecTime.Text = elapsed;
+                this.execState = ExecutionState.QueryHasBeenExecuted;
+
+                //Update the query history
+                DataRow dr = this.dtQueryHistory.NewRow();
+                dr["QueryText"] = m_qry;
+                dr["ElapsedTime"] = elapsed;
+                dr["ExecutedBy"] = this.essUser;
+                dr["Timestamp"] = DateTime.Now;
+                this.dtQueryHistory.Rows.Add(dr);
 
                 //Retrieve and parse the multi-dimensional data set
                 IEssMdDataSet ds = cv.getMdDataSet();
@@ -130,7 +160,7 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error executing query: " + ex.Message, "Query Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(String.Format("Error executing query: {0}", ex.Message), "Query Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void btnExport_Click(object sender, EventArgs e)
@@ -143,53 +173,60 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
             else
                 return;
 
-            switch (sfdExport.FilterIndex)
+            try
             {
-                case 1:
-                    Microsoft.Office.Interop.Excel.Application xlApp;
-                    Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
-                    Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
-                    object misValue = System.Reflection.Missing.Value;
+                switch (sfdExport.FilterIndex)
+                {
+                    case 1:
+                        Microsoft.Office.Interop.Excel.Application xlApp;
+                        Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+                        Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+                        object misValue = System.Reflection.Missing.Value;
 
-                    xlApp = new Microsoft.Office.Interop.Excel.Application();
-                    xlWorkBook = xlApp.Workbooks.Add(misValue);
-                    xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-                    xlWorkSheet.Name = "Data";
+                        xlApp = new Microsoft.Office.Interop.Excel.Application();
+                        xlWorkBook = xlApp.Workbooks.Add(misValue);
+                        xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+                        xlWorkSheet.Name = "Data";
 
-                    int i = 0;
-                    int j = 0;
+                        int i = 0;
+                        int j = 0;
 
-                    for (i = 0; i <= dgvResults.RowCount - 1; i++)
-                    {
-                        for (j = 0; j <= dgvResults.ColumnCount - 1; j++)
+                        for (i = 0; i <= dgvResults.RowCount - 1; i++)
                         {
-                            DataGridViewCell cell = dgvResults[j, i];
-                            xlWorkSheet.Cells[i + 1, j + 1] = cell.Value;
+                            for (j = 0; j <= dgvResults.ColumnCount - 1; j++)
+                            {
+                                DataGridViewCell cell = dgvResults[j, i];
+                                xlWorkSheet.Cells[i + 1, j + 1] = cell.Value;
+                            }
                         }
-                    }
-                    xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(2);
-                    xlWorkSheet.Name = "Query";
-                    xlWorkSheet.Cells[1, 1] = txtQuery.Text;
-                    xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(3);
-                    xlWorkSheet.Delete();
 
-                    xlWorkBook.SaveAs(filename, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                    xlWorkBook.Close(true, misValue, misValue);
-                    xlApp.Quit();
+                        //Excel 2016 no longer starts with 3 worksheets by default, need to add each
+                        xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.Add();
+                        xlWorkSheet.Name = "Query";
+                        xlWorkSheet.Cells[1, 1] = scintQry.Text;
 
-                    releaseObject(xlWorkSheet);
-                    releaseObject(xlWorkBook);
-                    releaseObject(xlApp);
+                        xlWorkBook.SaveAs(filename, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                        xlWorkBook.Close(true, misValue, misValue);
+                        xlApp.Quit();
 
-                    MessageBox.Show("Excel file created: " + filename);
-                    break;
+                        releaseObject(xlWorkSheet);
+                        releaseObject(xlWorkBook);
+                        releaseObject(xlApp);
 
-                case 2:
-                    WriteToFile(',', filename);
-                    break;
-                case 3:
-                    WriteToFile('|', filename);
-                    break;
+                        MessageBox.Show("Excel file created: " + filename);
+                        break;
+
+                    case 2:
+                        WriteToFile(',', filename);
+                        break;
+                    case 3:
+                        WriteToFile('|', filename);
+                        break;
+                }
+            }
+            catch (Exception ex) 
+            { 
+            
             }
         }
         #endregion
@@ -238,9 +275,22 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
             if (bld.completed)
             {
                 m_qry = bld.builtQuery;
-                txtQuery.Text = m_qry;
+                scintQry.Text = m_qry;
             }
             bld = null;
+        }
+        private void tsddRecentQueries_Click(object sender, EventArgs e)
+        {
+            if (this.dtQueryHistory.Rows.Count == 0)
+                MessageBox.Show("No query history was loaded");
+            else
+            {
+                frmQueryHistory frm = new frmQueryHistory(this.dtQueryHistory);
+                frm.ShowDialog();
+                if (frm.loadQuery)
+                    scintQry.Text = frm.queryText;
+                frm.Dispose();
+            }
         }
         #endregion
 
@@ -293,7 +343,7 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
                 btnConnect.Text = "&Disconnect";
                 btnExecute.Enabled = true;
                 btnExport.Enabled = true;
-                txtQuery.Enabled = true;
+                scintQry.Enabled = true;
                 dgvResults.Enabled = true;
                 saveConfigToolStripMenuItem.Enabled = true;
                 loadConfigToolStripMenuItem.Enabled = false;
@@ -311,9 +361,10 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
                 btnConnect.Text = "&Connect";
                 btnExecute.Enabled = false;
                 btnExport.Enabled = false;
-                txtQuery.Enabled = false;
+                scintQry.Enabled = false;
                 dgvResults.DataSource = null;
                 dgvResults.Enabled = false;
+                tsslExecTime.Text = "";
                 saveConfigToolStripMenuItem.Enabled = false;
                 loadConfigToolStripMenuItem.Enabled = true;
                 queryBuilderToolStripMenuItem.Enabled = false;
@@ -456,7 +507,7 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
                 outfile.WriteLine("essPW|{0}", System.Convert.ToBase64String(enc.Encrypt(System.Text.Encoding.ASCII.GetBytes(essPW))));
                 outfile.WriteLine("essApp|{0}", essApp);
                 outfile.WriteLine("essDB|{0}", essDB);
-                outfile.WriteLine("query|{0}", txtQuery.Text);
+                outfile.WriteLine("query|{0}", scintQry.Text);
             }
             catch (Exception ex)
             {
@@ -533,7 +584,7 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
                     cv.close();
                 cv = svr.getApplication(essApp).getCube(essDB).openCubeView("JDH_CubeView");
                 frmState = ConnectionState.Connected;
-                txtQuery.Text = m_qry;
+                scintQry.Text = m_qry;
                 UpdateFormState();
             }
             catch (Exception ex)
@@ -546,6 +597,32 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
         {
             tsslStatusOut.Text = String.Format("Connected | {0}.{1} | {2}", essApp, essDB, elapsedTime.Elapsed.ToString("hh\\:mm\\:ss"));
         }
+        private void LoadQueryHistory()
+        {
+            this.dtQueryHistory = new DataTable();
+            this.dtQueryHistory.TableName = "QueryHistory";
+            this.dtQueryHistory.Columns.Add("QueryText", typeof(String));
+            this.dtQueryHistory.Columns.Add("ElapsedTime", typeof(String));
+            this.dtQueryHistory.Columns.Add("ExecutedBy", typeof(String));
+            this.dtQueryHistory.Columns.Add("Timestamp", typeof(DateTime));
+
+            if (File.Exists(Properties.Settings.Default.QueryHistoryFile))
+            {
+                try
+                {
+                    this.dtQueryHistory.ReadXml(Properties.Settings.Default.QueryHistoryFile);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(String.Format("Unable to load query history from file {0}",Properties.Settings.Default.QueryHistoryFile));
+                }
+            }
+
+        }
+        private void SaveQueryHistory()
+        {
+            this.dtQueryHistory.WriteXml(Properties.Settings.Default.QueryHistoryFile);
+        }
         #endregion
 
         #region BASE CLASS OVERRIDES
@@ -557,7 +634,105 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
                 this.elapsedTime.Stop();
                 Disconnect();
             }
+            SaveQueryHistory();
+            if (Properties.Settings.Default.AutoSave)
+                WriteConfig(Properties.Settings.Default.AutoSaveLocation);
             base.OnClosed(e);
+        }
+        #endregion
+
+        #region ScintillaNET CODE FORMATTING FUNCTIONS
+        private void FormatCodeBox()
+        {
+            this.mdxlexer = new MDXLexer("Dimension set member index END property from SELECT NON EMPTY COLUMNS FROM WHERE ROWS AXIS ON PAGES CHAPTERS SECTIONS PROPERTIES AFTER BEFORE ALL or AND NOT IN first AVERAGE FOR Level CREATE DELETE WHEN THEN Abs Aggregate Ancestor Attribute Avg BottomCount BottomPercent BottomSum CASE Children ClosingPeriod CoalesceEmpty Concat Contains Count Cousin CrossJoin CurrentMember CurrentTuple DateDiff DatePart DateRoll DateToMember DefaultMember Descendants Distinct DrilldownByLayer DrilldownMember DrillupByLayer DrillupMember Except Exp Extract Factorial FILTER FirstChild FirstSibling FormatDate GetFirstDate GetLastDate Generate Generations Generations Head Hierarchize IIF InStr Int Intersect IS IsAccType IsAncestor IsChild IsEmpty IsGeneration IsLeaf IsLevel IsSibling IsUda IsValid Item Item Lag LastChild LastPeriods LastSibling Lead Left Len Leaves Levels Levels Ln Log Log10 Lower LTrim Max Median MemberRange Members Min Mod NextMember NonEmptyCount NTile Ordinal ParallelPeriod Parent Percentile PeriodsToDate Power PrevMember Rank Remainder Right Round RTrim Siblings Stddev Stddevp StrToMbr StrToNum Subset Substring Sum Tail Todate TodateEx Today TopCount TopPercent TopSum Truncate TupleRange Uda Union Upper WithAttr Generation xTD IS ANY");
+            scintQry.Margins[0].Width = 16;
+            scintQry.StyleResetDefault();
+            scintQry.Styles[Style.Default].Font = "Consolas";
+            scintQry.Styles[Style.Default].Size = 10;
+            scintQry.StyleClearAll();
+
+            scintQry.Styles[MDXLexer.StyleDefault].ForeColor = Color.Black;
+            scintQry.Styles[MDXLexer.StyleKeyword].ForeColor = Color.Blue;
+            scintQry.Styles[MDXLexer.StyleIdentifier].ForeColor = Color.Teal;
+            scintQry.Styles[MDXLexer.StyleNumber].ForeColor = Color.Purple;
+            scintQry.Styles[MDXLexer.StyleString].ForeColor = Color.Red;
+            
+            scintQry.Lexer = Lexer.Container;
+        }
+        private void scintQry_StyleNeeded(object sender, StyleNeededEventArgs e)
+        {
+            var startPos = scintQry.GetEndStyled();
+            var endPos = e.Position;
+
+            mdxlexer.Style(scintQry, startPos, endPos);
+        }
+        private void scintQry_UpdateUI(object sender, UpdateUIEventArgs e)
+        {
+            // Has the caret changed position?
+            var caretPos = scintQry.CurrentPosition;
+            if (lastCaretPos != caretPos)
+            {
+                lastCaretPos = caretPos;
+                var bracePos1 = -1;
+                var bracePos2 = -1;
+
+                // Is there a brace to the left or right?
+                if (caretPos > 0 && IsBrace(scintQry.GetCharAt(caretPos - 1)))
+                    bracePos1 = (caretPos - 1);
+                else if (IsBrace(scintQry.GetCharAt(caretPos)))
+                    bracePos1 = caretPos;
+
+                if (bracePos1 >= 0)
+                {
+                    // Find the matching brace
+                    bracePos2 = scintQry.BraceMatch(bracePos1);
+                    if (bracePos2 == Scintilla.InvalidPosition)
+                    {
+                        scintQry.BraceBadLight(bracePos1);
+                        scintQry.HighlightGuide = 0;
+                    }
+                    else
+                    {
+                        scintQry.BraceHighlight(bracePos1, bracePos2);
+                        scintQry.HighlightGuide = scintQry.GetColumn(bracePos1);
+                    }
+                }
+                else
+                {
+                    // Turn off brace matching
+                    scintQry.BraceHighlight(Scintilla.InvalidPosition, Scintilla.InvalidPosition);
+                    scintQry.HighlightGuide = 0;
+                }
+            }
+        }
+        private static bool IsBrace(int c)
+        {
+            switch (c)
+            {
+                case '(':
+                case ')':
+                case '[':
+                case ']':
+                case '{':
+                case '}':
+                case '<':
+                case '>':
+                    return true;
+            }
+
+            return false;
+        }
+        private void scintQry_TextChanged(object sender, EventArgs e)
+        {
+            var maxLineNumberCharLength = scintQry.Lines.Count.ToString().Length;
+            if (maxLineNumberCharLength == this.maxLineNumberCharLength)
+                return;
+
+            // Calculate the width required to display the last line number
+            // and include some padding for good measure.
+            const int padding = 2;
+            scintQry.Margins[0].Width = scintQry.TextWidth(Style.LineNumber, new string('9', maxLineNumberCharLength + 1)) + padding;
+            this.maxLineNumberCharLength = maxLineNumberCharLength;
         }
         #endregion
 

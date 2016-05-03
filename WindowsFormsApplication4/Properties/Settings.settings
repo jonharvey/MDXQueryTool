@@ -1,15 +1,18 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WindowsFormsApplication1.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MDXQueryTool.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="AutoSave" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="AutoSaveLocation" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Users\jharvey.ECAP\Desktop\configuration.cfg</Value>
+      <Value Profile="(Default)">C:\Users\Jon\Desktop\configuration.cfg</Value>
     </Setting>
     <Setting Name="NameAlias" Type="System.String" Scope="User">
       <Value Profile="(Default)">NAME</Value>
+    </Setting>
+    <Setting Name="QueryHistoryFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\Jon\Desktop\queries.xml</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -30,7 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            this.txtQuery = new System.Windows.Forms.TextBox();
             this.btnConnect = new System.Windows.Forms.Button();
             this.btnExecute = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
@@ -52,21 +51,15 @@
             this.statusMain = new System.Windows.Forms.StatusStrip();
             this.tsslStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslStatusOut = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslLeftSpacer = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslExecTime = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslRightSpacer = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsddRecentQueries = new System.Windows.Forms.ToolStripDropDownButton();
+            this.scintQry = new ScintillaNET.Scintilla();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).BeginInit();
             this.mnuMain.SuspendLayout();
             this.statusMain.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // txtQuery
-            // 
-            this.txtQuery.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtQuery.Enabled = false;
-            this.txtQuery.Location = new System.Drawing.Point(13, 40);
-            this.txtQuery.Multiline = true;
-            this.txtQuery.Name = "txtQuery";
-            this.txtQuery.Size = new System.Drawing.Size(808, 149);
-            this.txtQuery.TabIndex = 0;
             // 
             // btnConnect
             // 
@@ -80,8 +73,8 @@
             // 
             // btnExecute
             // 
-            this.btnExecute.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExecute.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExecute.Enabled = false;
             this.btnExecute.Location = new System.Drawing.Point(206, 195);
             this.btnExecute.Name = "btnExecute";
@@ -107,9 +100,9 @@
             // 
             this.dgvResults.AllowUserToAddRows = false;
             this.dgvResults.AllowUserToDeleteRows = false;
-            this.dgvResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvResults.ColumnHeadersVisible = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -131,7 +124,7 @@
             // 
             this.sfdExport.FileName = "export";
             this.sfdExport.Filter = "Excel Files (*.xls)|*.xls|Comma-Separated Values (*.csv)|*.csv|Pipe-Separated Val" +
-                "ues (*.psv)|*.psv";
+    "ues (*.psv)|*.psv";
             this.sfdExport.Title = "Save export as...";
             // 
             // mnuMain
@@ -228,6 +221,7 @@
             this.sfdConfig.FileName = "configuration";
             this.sfdConfig.Filter = "Config Files (*.cfg)|*.cfg";
             this.sfdConfig.Title = "Save configration as...";
+            this.sfdConfig.ValidateNames = false;
             // 
             // ofdConfig
             // 
@@ -239,7 +233,11 @@
             // 
             this.statusMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsslStatus,
-            this.tsslStatusOut});
+            this.tsslStatusOut,
+            this.tsslLeftSpacer,
+            this.tsslExecTime,
+            this.tsslRightSpacer,
+            this.tsddRecentQueries});
             this.statusMain.Location = new System.Drawing.Point(0, 535);
             this.statusMain.Name = "statusMain";
             this.statusMain.Size = new System.Drawing.Size(833, 22);
@@ -260,17 +258,58 @@
             this.tsslStatusOut.Size = new System.Drawing.Size(79, 17);
             this.tsslStatusOut.Text = "Disconnected";
             // 
+            // tsslLeftSpacer
+            // 
+            this.tsslLeftSpacer.Name = "tsslLeftSpacer";
+            this.tsslLeftSpacer.Size = new System.Drawing.Size(318, 17);
+            this.tsslLeftSpacer.Spring = true;
+            // 
+            // tsslExecTime
+            // 
+            this.tsslExecTime.Name = "tsslExecTime";
+            this.tsslExecTime.Size = new System.Drawing.Size(0, 17);
+            // 
+            // tsslRightSpacer
+            // 
+            this.tsslRightSpacer.Name = "tsslRightSpacer";
+            this.tsslRightSpacer.Size = new System.Drawing.Size(318, 17);
+            this.tsslRightSpacer.Spring = true;
+            // 
+            // tsddRecentQueries
+            // 
+            this.tsddRecentQueries.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsddRecentQueries.Image = ((System.Drawing.Image)(resources.GetObject("tsddRecentQueries.Image")));
+            this.tsddRecentQueries.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsddRecentQueries.Name = "tsddRecentQueries";
+            this.tsddRecentQueries.Size = new System.Drawing.Size(29, 20);
+            this.tsddRecentQueries.Text = "Query History";
+            this.tsddRecentQueries.Click += new System.EventHandler(this.tsddRecentQueries_Click);
+            // 
+            // scintQry
+            // 
+            this.scintQry.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.scintQry.Lexer = ScintillaNET.Lexer.Null;
+            this.scintQry.Location = new System.Drawing.Point(12, 27);
+            this.scintQry.Name = "scintQry";
+            this.scintQry.ScrollWidth = 700;
+            this.scintQry.Size = new System.Drawing.Size(809, 162);
+            this.scintQry.TabIndex = 7;
+            this.scintQry.StyleNeeded += new System.EventHandler<ScintillaNET.StyleNeededEventArgs>(this.scintQry_StyleNeeded);
+            this.scintQry.UpdateUI += new System.EventHandler<ScintillaNET.UpdateUIEventArgs>(this.scintQry_UpdateUI);
+            this.scintQry.TextChanged += new System.EventHandler(this.scintQry_TextChanged);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(833, 557);
+            this.Controls.Add(this.scintQry);
             this.Controls.Add(this.statusMain);
             this.Controls.Add(this.dgvResults);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnExecute);
             this.Controls.Add(this.btnConnect);
-            this.Controls.Add(this.txtQuery);
             this.Controls.Add(this.mnuMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mnuMain;
@@ -290,7 +329,6 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtQuery;
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.Button btnExecute;
         private System.Windows.Forms.Button btnExport;
@@ -312,6 +350,11 @@
         private System.Windows.Forms.ToolStripStatusLabel tsslStatus;
         private System.Windows.Forms.ToolStripStatusLabel tsslStatusOut;
         private System.Windows.Forms.ToolStripMenuItem queryBuilderToolStripMenuItem;
+        private ScintillaNET.Scintilla scintQry;
+        private System.Windows.Forms.ToolStripDropDownButton tsddRecentQueries;
+        private System.Windows.Forms.ToolStripStatusLabel tsslExecTime;
+        private System.Windows.Forms.ToolStripStatusLabel tsslLeftSpacer;
+        private System.Windows.Forms.ToolStripStatusLabel tsslRightSpacer;
     }
 }
 

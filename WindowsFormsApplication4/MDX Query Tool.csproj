@@ -8,7 +8,7 @@
     <ProjectGuid>{72E9F3EF-30A6-4829-A4F0-A1F32545F339}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MDXQueryTool</RootNamespace>
+    <RootNamespace>com.ecapitaladvisors.hyperion.MDXQueryTool</RootNamespace>
     <AssemblyName>MDX Query Tool</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
@@ -87,6 +87,12 @@
     <Compile Include="frmAbout.Designer.cs">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmQueryHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQueryHistory.Designer.cs">
+      <DependentUpon>frmQueryHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTuples.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,12 +129,16 @@
     <Compile Include="frmMbrSelection.Designer.cs">
       <DependentUpon>frmMbrSelection.cs</DependentUpon>
     </Compile>
+    <Compile Include="MDXLexer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Tuple.cs" />
     <EmbeddedResource Include="frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQueryHistory.resx">
+      <DependentUpon>frmQueryHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTuples.resx">
       <DependentUpon>frmTuples.cs</DependentUpon>
@@ -195,6 +205,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Scintilla\ScintillaNET\src\ScintillaNET\ScintillaNET.csproj">
+      <Project>{22AE2386-60F1-476E-9303-61CDB0AAC4CF}</Project>
+      <Name>ScintillaNET</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EncryptionLibrary\EncryptionLibrary.vbproj">
       <Project>{6DFC8DD1-D0B9-417D-8477-AF4E4974CFF2}</Project>
       <Name>EncryptionLibrary</Name>

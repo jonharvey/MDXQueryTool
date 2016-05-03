@@ -8,8 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace com.ecapitaladvisors.hyperion.MDXQueryTool.Properties
-{
+namespace com.ecapitaladvisors.hyperion.MDXQueryTool.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -38,7 +37,7 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool.Properties
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\jharvey.ECAP\\Desktop\\configuration.cfg")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Jon\\Desktop\\configuration.cfg")]
         public string AutoSaveLocation {
             get {
                 return ((string)(this["AutoSaveLocation"]));
@@ -57,6 +56,18 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool.Properties
             }
             set {
                 this["NameAlias"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Jon\\Desktop\\queries.xml")]
+        public string QueryHistoryFile {
+            get {
+                return ((string)(this["QueryHistoryFile"]));
+            }
+            set {
+                this["QueryHistoryFile"] = value;
             }
         }
     }
