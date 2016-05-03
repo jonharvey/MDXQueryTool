@@ -41,20 +41,18 @@
             // 
             this.lblAbout.AutoSize = true;
             this.lblAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAbout.Location = new System.Drawing.Point(220, 11);
-            this.lblAbout.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAbout.Location = new System.Drawing.Point(165, 9);
             this.lblAbout.Name = "lblAbout";
-            this.lblAbout.Size = new System.Drawing.Size(272, 25);
+            this.lblAbout.Size = new System.Drawing.Size(219, 20);
             this.lblAbout.TabIndex = 0;
             this.lblAbout.Text = "ABOUT THIS SOFTWARE";
             // 
             // lblAboutText
             // 
             this.lblAboutText.AutoSize = true;
-            this.lblAboutText.Location = new System.Drawing.Point(19, 53);
-            this.lblAboutText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAboutText.Location = new System.Drawing.Point(14, 43);
             this.lblAboutText.Name = "lblAboutText";
-            this.lblAboutText.Size = new System.Drawing.Size(735, 68);
+            this.lblAboutText.Size = new System.Drawing.Size(549, 52);
             this.lblAboutText.TabIndex = 1;
             this.lblAboutText.Text = resources.GetString("lblAboutText.Text");
             // 
@@ -63,10 +61,9 @@
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabel1.LinkColor = System.Drawing.Color.Blue;
-            this.linkLabel1.Location = new System.Drawing.Point(201, 53);
-            this.linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.linkLabel1.Location = new System.Drawing.Point(151, 43);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(80, 17);
+            this.linkLabel1.Size = new System.Drawing.Size(61, 13);
             this.linkLabel1.TabIndex = 3;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Jon Harvey";
@@ -75,10 +72,9 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(251, 133);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Location = new System.Drawing.Point(188, 108);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(209, 28);
+            this.btnClose.Size = new System.Drawing.Size(157, 23);
             this.btnClose.TabIndex = 4;
             this.btnClose.Text = "&Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -89,10 +85,9 @@
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabel2.LinkColor = System.Drawing.Color.Blue;
-            this.linkLabel2.Location = new System.Drawing.Point(303, 53);
-            this.linkLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.linkLabel2.Location = new System.Drawing.Point(227, 43);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(117, 17);
+            this.linkLabel2.Size = new System.Drawing.Size(88, 13);
             this.linkLabel2.TabIndex = 5;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "eCapital Advisors";
@@ -104,10 +99,9 @@
             this.linkLabel3.AutoSize = true;
             this.linkLabel3.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabel3.LinkColor = System.Drawing.Color.Blue;
-            this.linkLabel3.Location = new System.Drawing.Point(285, 104);
-            this.linkLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.linkLabel3.Location = new System.Drawing.Point(213, 82);
             this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(188, 17);
+            this.linkLabel3.Size = new System.Drawing.Size(141, 13);
             this.linkLabel3.TabIndex = 6;
             this.linkLabel3.TabStop = true;
             this.linkLabel3.Text = "Beerware license agreement";
@@ -116,9 +110,9 @@
             // 
             // frmAbout
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 176);
+            this.ClientSize = new System.Drawing.Size(588, 143);
             this.Controls.Add(this.linkLabel3);
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.btnClose);
@@ -126,7 +120,6 @@
             this.Controls.Add(this.lblAbout);
             this.Controls.Add(this.lblAboutText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmAbout";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "About";

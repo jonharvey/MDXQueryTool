@@ -36,3 +36,41 @@ C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplicat
 C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\obj\x86\Release\WindowsFormsApplication1.frmTuples.resources
 C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\obj\x86\Release\WindowsFormsApplication1.frmQueryLayout.resources
 C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\WindowsFormsApplication4\obj\x86\Release\WindowsFormsApplication1.frmMbrSelection.resources
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\MDX Query Tool.exe.config
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\MDX Query Tool.exe
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\MDX Query Tool.pdb
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\EncryptionLibrary.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\IKVM.AWT.WinForms.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.Charsets.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.Corba.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.Media.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.Misc.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.Security.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.SwingAWT.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.XML.API.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\IKVM.Runtime.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\ScintillaNET.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.Text.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.Remoting.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.Util.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.Naming.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.Beans.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\IKVM.Runtime.JNI.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\IKVM.OpenJDK.Management.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\EncryptionLibrary.pdb
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\EncryptionLibrary.xml
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\ScintillaNET.pdb
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\bin\Release\ScintillaNET.xml
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\obj\x86\Release\MDX Query Tool.csproj.ResolveComReference.cache
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\obj\x86\Release\com.ecapitaladvisors.hyperion.MDXQueryTool.frmAbout.resources
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\obj\x86\Release\com.ecapitaladvisors.hyperion.MDXQueryTool.frmQueryHistory.resources
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\obj\x86\Release\com.ecapitaladvisors.hyperion.MDXQueryTool.frmTuples.resources
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\obj\x86\Release\com.ecapitaladvisors.hyperion.MDXQueryTool.frmConnect.resources
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\obj\x86\Release\com.ecapitaladvisors.hyperion.MDXQueryTool.frmMain.resources
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\obj\x86\Release\com.ecapitaladvisors.hyperion.MDXQueryTool.frmPrefs.resources
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\obj\x86\Release\com.ecapitaladvisors.hyperion.MDXQueryTool.frmQueryLayout.resources
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\obj\x86\Release\com.ecapitaladvisors.hyperion.MDXQueryTool.frmMbrSelection.resources
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\obj\x86\Release\com.ecapitaladvisors.hyperion.MDXQueryTool.Properties.Resources.resources
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\obj\x86\Release\MDX Query Tool.csproj.GenerateResource.Cache
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\obj\x86\Release\MDX Query Tool.exe
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\WindowsFormsApplication4\obj\x86\Release\MDX Query Tool.pdb

@@ -25,6 +25,7 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
                 chkAutoSave.Checked = true;
                 txtAutoFile.Text = Properties.Settings.Default.AutoSaveLocation;
             }
+            txtQueryHistFile.Text = Properties.Settings.Default.QueryHistoryFile;
             if (Properties.Settings.Default.NameAlias == "NAME")
                 cboMbrDisplay.SelectedIndex = 0;
             else
@@ -51,12 +52,22 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
         private void btnBrowse_Click(object sender, EventArgs e)
         {
             String filename = null;
-            DialogResult dr = ofdAutoFile.ShowDialog();
+            DialogResult dr = sfdAutoFile.ShowDialog();
             if (dr == DialogResult.OK)
-                filename = ofdAutoFile.FileName;
+                filename = sfdAutoFile.FileName;
             else
                 return;
             txtAutoFile.Text = filename;
+        }
+        private void btnOFDQueryHist_Click(object sender, EventArgs e)
+        {
+            String filename = null;
+            DialogResult dr = sfdQueryHist.ShowDialog();
+            if (dr == DialogResult.OK)
+                filename = sfdQueryHist.FileName;
+            else
+                return;
+            txtQueryHistFile.Text = filename;
         }
         #endregion
 
@@ -65,6 +76,7 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
         {
             Properties.Settings.Default["AutoSave"] = chkAutoSave.Checked;
             Properties.Settings.Default["AutoSaveLocation"] = txtAutoFile.Text.Trim();
+            Properties.Settings.Default["QueryHistoryFile"] = txtQueryHistFile.Text.Trim();
             Properties.Settings.Default["NameAlias"] = cboMbrDisplay.SelectedItem;
             Properties.Settings.Default.Save();
         }

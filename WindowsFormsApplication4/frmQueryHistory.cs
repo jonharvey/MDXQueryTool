@@ -53,6 +53,8 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
             lblExecDate.DataBindings.Add("Text", binddsQueryHist, "Timestamp");
             lblExecTime.DataBindings.Add("Text", binddsQueryHist, "ElapsedTime");
             binddsQueryHist.MoveLast();
+            scintQry.ReadOnly = true;
+            bindnavQuerySet.Focus();
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -61,9 +63,27 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
         private void frmQueryHistory_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Right)
+            {
+                scintQry.ReadOnly = false;
                 binddsQueryHist.MoveNext();
+                scintQry.SelectionStart = 0;
+                scintQry.SelectionEnd = 0;
+                scintQry.ReadOnly = true;
+            }
             if (e.KeyCode == Keys.Left)
+            {
+                scintQry.ReadOnly = false;
                 binddsQueryHist.MovePrevious();
+                scintQry.SelectionStart = 0;
+                scintQry.SelectionEnd = 0;
+                scintQry.ReadOnly = true;
+            }
+        }
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            this.boolLoadQry = true;
+            this.strQueryText = scintQry.Text;
+            this.Close();
         }
         #endregion
 
@@ -94,42 +114,7 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
         }
         private void scintQry_UpdateUI(object sender, UpdateUIEventArgs e)
         {
-            // Has the caret changed position?
-            var caretPos = scintQry.CurrentPosition;
-            if (lastCaretPos != caretPos)
-            {
-                lastCaretPos = caretPos;
-                var bracePos1 = -1;
-                var bracePos2 = -1;
 
-                // Is there a brace to the left or right?
-                if (caretPos > 0 && IsBrace(scintQry.GetCharAt(caretPos - 1)))
-                    bracePos1 = (caretPos - 1);
-                else if (IsBrace(scintQry.GetCharAt(caretPos)))
-                    bracePos1 = caretPos;
-
-                if (bracePos1 >= 0)
-                {
-                    // Find the matching brace
-                    bracePos2 = scintQry.BraceMatch(bracePos1);
-                    if (bracePos2 == Scintilla.InvalidPosition)
-                    {
-                        scintQry.BraceBadLight(bracePos1);
-                        scintQry.HighlightGuide = 0;
-                    }
-                    else
-                    {
-                        scintQry.BraceHighlight(bracePos1, bracePos2);
-                        scintQry.HighlightGuide = scintQry.GetColumn(bracePos1);
-                    }
-                }
-                else
-                {
-                    // Turn off brace matching
-                    scintQry.BraceHighlight(Scintilla.InvalidPosition, Scintilla.InvalidPosition);
-                    scintQry.HighlightGuide = 0;
-                }
-            }
         }
         private static bool IsBrace(int c)
         {
@@ -150,15 +135,7 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
         }
         private void scintQry_TextChanged(object sender, EventArgs e)
         {
-            var maxLineNumberCharLength = scintQry.Lines.Count.ToString().Length;
-            if (maxLineNumberCharLength == this.maxLineNumberCharLength)
-                return;
 
-            // Calculate the width required to display the last line number
-            // and include some padding for good measure.
-            const int padding = 2;
-            scintQry.Margins[0].Width = scintQry.TextWidth(Style.LineNumber, new string('9', maxLineNumberCharLength + 1)) + padding;
-            this.maxLineNumberCharLength = maxLineNumberCharLength;
         }
         #endregion
 

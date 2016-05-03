@@ -33,9 +33,13 @@
             this.txtAutoFile = new System.Windows.Forms.TextBox();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.ofdAutoFile = new System.Windows.Forms.OpenFileDialog();
             this.lblMbrDisplay = new System.Windows.Forms.Label();
             this.cboMbrDisplay = new System.Windows.Forms.ComboBox();
+            this.btnOFDQueryHist = new System.Windows.Forms.Button();
+            this.txtQueryHistFile = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.sfdAutoFile = new System.Windows.Forms.SaveFileDialog();
+            this.sfdQueryHist = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // lblAutoSave
@@ -78,7 +82,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(144, 107);
+            this.btnClose.Location = new System.Drawing.Point(144, 138);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(145, 23);
             this.btnClose.TabIndex = 7;
@@ -86,16 +90,10 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // ofdAutoFile
-            // 
-            this.ofdAutoFile.FileName = "autosave";
-            this.ofdAutoFile.Filter = "Config Files (*.cfg)|*.cfg";
-            this.ofdAutoFile.Title = "Select Auto-Save location...";
-            // 
             // lblMbrDisplay
             // 
             this.lblMbrDisplay.AutoSize = true;
-            this.lblMbrDisplay.Location = new System.Drawing.Point(50, 73);
+            this.lblMbrDisplay.Location = new System.Drawing.Point(50, 104);
             this.lblMbrDisplay.Name = "lblMbrDisplay";
             this.lblMbrDisplay.Size = new System.Drawing.Size(88, 13);
             this.lblMbrDisplay.TabIndex = 8;
@@ -107,16 +105,59 @@
             this.cboMbrDisplay.Items.AddRange(new object[] {
             "NAME",
             "ALIAS"});
-            this.cboMbrDisplay.Location = new System.Drawing.Point(144, 70);
+            this.cboMbrDisplay.Location = new System.Drawing.Point(144, 101);
             this.cboMbrDisplay.Name = "cboMbrDisplay";
             this.cboMbrDisplay.Size = new System.Drawing.Size(145, 21);
             this.cboMbrDisplay.TabIndex = 9;
+            // 
+            // btnOFDQueryHist
+            // 
+            this.btnOFDQueryHist.Location = new System.Drawing.Point(415, 64);
+            this.btnOFDQueryHist.Name = "btnOFDQueryHist";
+            this.btnOFDQueryHist.Size = new System.Drawing.Size(28, 20);
+            this.btnOFDQueryHist.TabIndex = 12;
+            this.btnOFDQueryHist.Text = "...";
+            this.btnOFDQueryHist.UseVisualStyleBackColor = true;
+            this.btnOFDQueryHist.Click += new System.EventHandler(this.btnOFDQueryHist_Click);
+            // 
+            // txtQueryHistFile
+            // 
+            this.txtQueryHistFile.Location = new System.Drawing.Point(144, 64);
+            this.txtQueryHistFile.Name = "txtQueryHistFile";
+            this.txtQueryHistFile.Size = new System.Drawing.Size(265, 20);
+            this.txtQueryHistFile.TabIndex = 11;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(48, 67);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Query history file :";
+            // 
+            // sfdAutoFile
+            // 
+            this.sfdAutoFile.DefaultExt = "cfg";
+            this.sfdAutoFile.FileName = "autosave";
+            this.sfdAutoFile.Filter = "Config Files (*.cfg)|*.cfg";
+            this.sfdAutoFile.Title = "Select Auto-Save location...";
+            // 
+            // sfdQueryHist
+            // 
+            this.sfdQueryHist.DefaultExt = "xml";
+            this.sfdQueryHist.FileName = "query_hist";
+            this.sfdQueryHist.Filter = "XML Files (*.xml)|*.xml";
+            this.sfdQueryHist.Title = "Select location of query history file...";
             // 
             // frmPrefs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(462, 142);
+            this.ClientSize = new System.Drawing.Size(462, 179);
+            this.Controls.Add(this.btnOFDQueryHist);
+            this.Controls.Add(this.txtQueryHistFile);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.cboMbrDisplay);
             this.Controls.Add(this.lblMbrDisplay);
             this.Controls.Add(this.btnClose);
@@ -141,8 +182,12 @@
         private System.Windows.Forms.TextBox txtAutoFile;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.OpenFileDialog ofdAutoFile;
         private System.Windows.Forms.Label lblMbrDisplay;
         private System.Windows.Forms.ComboBox cboMbrDisplay;
+        private System.Windows.Forms.Button btnOFDQueryHist;
+        private System.Windows.Forms.TextBox txtQueryHistFile;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.SaveFileDialog sfdAutoFile;
+        private System.Windows.Forms.SaveFileDialog sfdQueryHist;
     }
 }

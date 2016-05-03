@@ -8,3 +8,11 @@ C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplicat
 C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\EncryptionLibrary\obj\Release\EncryptionLibrary.dll
 C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\EncryptionLibrary\obj\Release\EncryptionLibrary.xml
 C:\Users\jharvey.ECAP\Documents\Visual Studio 2010\Projects\WindowsFormsApplication4\EncryptionLibrary\obj\Release\EncryptionLibrary.pdb
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\EncryptionLibrary\bin\Release\EncryptionLibrary.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\EncryptionLibrary\bin\Release\EncryptionLibrary.pdb
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\EncryptionLibrary\bin\Release\EncryptionLibrary.xml
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\EncryptionLibrary\obj\Release\EncryptionLibrary.Resources.resources
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\EncryptionLibrary\obj\Release\EncryptionLibrary.vbproj.GenerateResource.Cache
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\EncryptionLibrary\obj\Release\EncryptionLibrary.dll
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\EncryptionLibrary\obj\Release\EncryptionLibrary.xml
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\EncryptionLibrary\obj\Release\EncryptionLibrary.pdb

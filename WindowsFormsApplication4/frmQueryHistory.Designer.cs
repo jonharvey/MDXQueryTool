@@ -66,6 +66,7 @@
             this.scintQry.StyleNeeded += new System.EventHandler<ScintillaNET.StyleNeededEventArgs>(this.scintQry_StyleNeeded);
             this.scintQry.UpdateUI += new System.EventHandler<ScintillaNET.UpdateUIEventArgs>(this.scintQry_UpdateUI);
             this.scintQry.TextChanged += new System.EventHandler(this.scintQry_TextChanged);
+            this.scintQry.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmQueryHistory_KeyDown);
             // 
             // bindnavQuerySet
             // 
@@ -195,6 +196,7 @@
             this.btnLoad.TabIndex = 7;
             this.btnLoad.Text = "&Load";
             this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // btnCancel
             // 
@@ -245,9 +247,11 @@
             this.Controls.Add(this.scintQry);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmQueryHistory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Recently Executed Queries";
+            this.Text = "Previously Executed Queries";
             this.Load += new System.EventHandler(this.frmQueryHistory_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmQueryHistory_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.bindnavQuerySet)).EndInit();

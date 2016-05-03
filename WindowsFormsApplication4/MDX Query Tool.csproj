@@ -61,13 +61,44 @@
     <Reference Include="ess_japi">
       <HintPath>D:\Development Libraries\Essbase\11.1.2.4\ess_japi.dll</HintPath>
     </Reference>
+    <Reference Include="IKVM.AWT.WinForms">
+      <HintPath>..\..\..\..\..\..\..\Development Libraries\IKVM.AWT.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Charsets">
+      <HintPath>..\..\..\..\..\..\..\Development Libraries\IKVM.OpenJDK.Charsets.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Corba">
+      <HintPath>..\..\..\..\..\..\..\Development Libraries\IKVM.OpenJDK.Corba.dll</HintPath>
+    </Reference>
     <Reference Include="IKVM.OpenJDK.Core">
       <HintPath>D:\SOFTWARE\Development Tools\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Media">
+      <HintPath>..\..\..\..\..\..\..\Development Libraries\IKVM.OpenJDK.Media.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Misc">
+      <HintPath>..\..\..\..\..\..\..\Development Libraries\IKVM.OpenJDK.Misc.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Security">
+      <HintPath>..\..\..\..\..\..\..\Development Libraries\IKVM.OpenJDK.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.SwingAWT">
+      <HintPath>..\..\..\..\..\..\..\Development Libraries\IKVM.OpenJDK.SwingAWT.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.API">
+      <HintPath>..\..\..\..\..\..\..\Development Libraries\IKVM.OpenJDK.XML.API.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime">
+      <HintPath>..\..\..\..\..\..\..\Development Libraries\IKVM.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="ScintillaNET, Version=3.5.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Scintilla\ScintillaNET\src\ScintillaNET\bin\Release\ScintillaNET.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -205,10 +236,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Scintilla\ScintillaNET\src\ScintillaNET\ScintillaNET.csproj">
-      <Project>{22AE2386-60F1-476E-9303-61CDB0AAC4CF}</Project>
-      <Name>ScintillaNET</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EncryptionLibrary\EncryptionLibrary.vbproj">
       <Project>{6DFC8DD1-D0B9-417D-8477-AF4E4974CFF2}</Project>
       <Name>EncryptionLibrary</Name>

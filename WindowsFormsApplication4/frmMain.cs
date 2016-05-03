@@ -288,7 +288,15 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
                 frmQueryHistory frm = new frmQueryHistory(this.dtQueryHistory);
                 frm.ShowDialog();
                 if (frm.loadQuery)
+                {
+                    if (scintQry.Text.Trim() != "")
+                    {
+                        DialogResult dr = MessageBox.Show("Loading a prior query will overwrite the query currently in the editor, potentially resulting in loss of work.  Proceed?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                        if (dr == DialogResult.No)
+                            return;
+                    }
                     scintQry.Text = frm.queryText;
+                }
                 frm.Dispose();
             }
         }
@@ -715,8 +723,6 @@ namespace com.ecapitaladvisors.hyperion.MDXQueryTool
                 case ']':
                 case '{':
                 case '}':
-                case '<':
-                case '>':
                     return true;
             }
 

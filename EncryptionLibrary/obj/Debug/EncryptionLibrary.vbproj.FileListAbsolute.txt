@@ -24,3 +24,4 @@ C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\EncryptionLibrar
 C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\EncryptionLibrary\obj\Debug\EncryptionLibrary.dll
 C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\EncryptionLibrary\obj\Debug\EncryptionLibrary.xml
 C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\EncryptionLibrary\obj\Debug\EncryptionLibrary.pdb
+C:\Users\Jon\Documents\Visual Studio 2013\Projects\MDXQueryTool\EncryptionLibrary\obj\Debug\EncryptionLibrary.vbprojResolveAssemblyReference.cache
